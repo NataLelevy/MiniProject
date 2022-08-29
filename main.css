@@ -1,0 +1,93 @@
+/* Стилизація проєкта -
+
+user-details.html - блок з інфою про user зверху сторінки. Кнопка нижчє, на 90% ширини сторінки,
+по центру. блоки з короткою іфною про post - в ряд по 5 .
+post-details.html - блок з інфою про пост зверху. Коментарі - по 4 в ряд.
+Всі елементи котрі характеризують users, posts, comments візуалізувати, так, щоб було видно що 
+це блоки (дати фон. марджини і тд) */
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* index page */
+
+.users{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.users div{
+  width: calc(50% - 7.5px);
+  background-color: #fdfdfd;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 5px 5px #f1f1f1;
+}
+
+.users a{
+  margin-left: 10px;
+  color: blueviolet;
+}
+
+
+/* user details page */
+
+.user-details {
+  background-color: #fdfdfd;
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  padding: 15px;
+  box-shadow: 0 5px 5px #f1f1f1;
+  margin-bottom: 30px;
+}
+
+.user-details p{
+  margin: 0;
+}
+
+.user-posts-button {
+  width: 90%;
+  margin: 0 auto;
+  display: block;
+}
+
+.user-posts {
+  background-color: #fdfdfd;
+}
+.user-posts ol {
+  margin: 20px 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+.user-posts li {
+  display: inline-block;
+  padding: 3px 0;
+  width: calc(20% - 8px);
+  border: 1px solid #dfdfdf;
+  border-radius: 5px;
+  padding: 15px;
+}
+
+
+/* post details page */
+
+.post{
+  background-color: bisque;
+  width: 300px;
+  height: 120px;
+}
+
+.li{
+  margin:35px;
+  display: flex;
+  flex-wrap: wrap;
+}

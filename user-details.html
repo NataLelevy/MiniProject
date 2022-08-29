@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>User Details</title>
+  <link rel="stylesheet" href="./main.css">
+</head>
+
+<body>
+
+  <h1>User details</h1>
+  <div class="user-details"></div>
+
+  <button class="user-posts-button">Post of current user</button>
+  <div class="user-posts"></div>
+
+
+
+
+  <script>
+    let url = new URL(location.href);
+    let id = url.searchParams.get('id');
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}`)
+      .then(resp => resp.json())
+      .then(user => {
+        let p = document.createElement('p');
+        p.innerHTML = `Name: <b>${user.name}</b><br>
+                       Username: <b>${user.username}</b><br>
+                       ID: <b>${user.id}</b><br>
+                       Address (City): <b>${user.address.city}</b><br>
+                       Website: <b>${user.website}</b><br>
+                       Company: <b>${user.company.name}</b><br>
+                       Email: <b>${user.email}</b><br>
+                       Phone: <b>${user.phone}</b>`;
+        document.querySelector('.user-details').appendChild(p);
+      });
+
+
+    document.querySelector('.user-posts-button').addEventListener('click', () => {
+      fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+        .then(resp => resp.json())
+        .then(posts => {
+          let ol = document.createElement('ol');
+          for (const post of posts) {
+            let li = document.createElement('li');
+            li.innerText = post.title;
+            ol.appendChild(li);
+            let a = document.createElement('a');
+            a.href = `post-details.html?id=${post.id}`;
+            a.innerText = 'Post Details';
+            div.appendChild(a);
+          };
+          document.querySelector('.user-posts').appendChild(ol);
+          document.querySelector('.user-posts-button').remove();
+        });
+    });      
+  </script>
+</body>
+
+</html>

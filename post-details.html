@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>Posts of user <u id="user_name"></u></h1>
+  <script>
+
+
+
+    let url = new URL (location.href);
+    let id = url.searchParams.get('id');
+
+    fetch(`https://jsonplaceholder.typicode.com/users/${id}/posts`)
+      .then(resp => resp.json())
+      .then(post => {
+        console.log (post)
+      });
+
+    fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`)
+      .then(resp => resp.json())
+      .then(comments => {
+        let ul = document.createElement ('ul');
+        for (const comment of comments) {
+          let li = document.createElement ('li');
+          li.innerHTML = `<b>${comment.email}</b>:<br/>${comment.body}`;
+          ul.appendChild(li);  
+        }
+        document.body.appendChild(ul);
+      });
+    
+  </script>
+</body>
+</html>
