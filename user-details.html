@@ -49,10 +49,6 @@
             let li = document.createElement('li');
             li.innerText = post.title;
             ol.appendChild(li);
-            let a = document.createElement('a');
-            a.href = `post-details.html?id=${post.id}`;
-            a.innerText = 'Post Details';
-            div.appendChild(a);
           };
           document.querySelector('.user-posts').appendChild(ol);
           document.querySelector('.user-posts-button').remove();
